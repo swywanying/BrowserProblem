@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>css-hack</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+</head>
+<body>
+<pre>
+	仅IE6和IE7识别
+　　@media screen\9 {   .selector {  property: value; } } 
+
+　　仅IE6和IE7、IE8识别
+
+　　@media \0screen\,screen\9 {   .selector {  property: value; } }
+
+　　仅IE8识别
+　　@media \0screen {   .selector {  property: value; } }
+
+　　仅IE8-10识别
+　　@media screen\0 {   .selector {  property: value; } } 
+
+　　仅IE9和IE10识别
+　　@media screen and (min-width:0\0) {   .selector {  property: value; } } 
+
+　　仅IE10识别
+　　@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {    /* IE10-spe 　
+       仅支持谷歌
+       @media screen and (-webkit-min-device-pixel-ratio:0) {
+        .footer .layout-help { padding-bottom:357px; } 
+        }　
+</pre>
+<pre>
+	1.
+	<!--[if !IE]> 除IE外都可识别 <![endif]-->
+	<!--[if IE]> 所有的IE可识别 <![endif]-->
+	<!--[if IE 6]> 仅IE6可识别 <![endif]-->
+	<!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
+	<!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
+	<!--[if IE 7]> 仅IE7可识别 <![endif]-->
+	<!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+	<!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
+	<!--[if IE 8]> 仅IE8可识别 <![endif]-->
+	<!-- [if lt IE 8]>IE8及以下<![endif] -->
+	<!-- [if gte iE 8]>IE8及以上<![endif] -->
+	<!--[if IE 9]> 仅IE9可识别 <![endif]-->
+	<!-- [if lt IE 9]> IE9及以下<![endif] -->
+	<!-- [if gte IE 9]>IE9及以上 < ![endif] -->
+	扩展知识:
+	<!--[if lt IE 9]>
+	加载CSS1
+	<!--[else]>
+	加载CSS2
+	<![endif]-->
+	注：这样有效是有效,但是用HTML VALIDATOR里,报错,因为这个不符合XHTML 1.1的规范,
+	如果把ELSE语句去掉,则正确.
+	上述问题解决方案一：
+	加载CSS2
+	<!--[if lt IE 9]>
+	加载CSS1(可以把要重写的写在这里).
+	<![endif]-->
+</pre>
+<pre>
+	_color:#fff;  6
+	*+color:#fff; 7
+	*			6,7
+	+			6,7
+	
+	\0			8,9,10
+	\9\0		9,10
+	\9			6,7,8,9,10
+
+
+	color:#fff;
+	color:#000\0;		ie8
+	color"#fff\9\0;
+
+	*color:#333;		ie6,7
+</pre>
+ 
+</body>
+</html>
